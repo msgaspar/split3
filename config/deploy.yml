@@ -18,7 +18,7 @@ servers:
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
-  ssl: true
+  ssl: false
   host: split3.mgaspar.dev
 
 # Credentials for your image host.
@@ -75,10 +75,10 @@ asset_path: /rails/public/assets
 
 # Configure the image builder.
 builder:
-  arch: amd64
+  arch: arm64
 
-  # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
-  # remote: ssh://docker@docker-builder-server
+  # Build image via remote server (useful for faster amd64 builds on arm64 computers)
+  remote: ssh://ubuntu@18.232.23.67
   #
   # # Pass arguments and secrets to the Docker build process
   # args:
@@ -88,8 +88,8 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# ssh:
-#   user: app
+ssh:
+  user: ubuntu
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
