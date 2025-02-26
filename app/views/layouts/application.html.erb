@@ -23,6 +23,16 @@
   </head>
 
   <body>
+    <nav>
+      
+      <% if authenticated? %>
+        <div class="flex gap-2 m-2">
+          <%= Current.user.name %> <span>-</span>
+          <%= button_to "Sair", session_path, method: :delete, class: "cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold px-1 rounded " %>
+        </div>
+      <% end %>
+      
+    </nav>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
