@@ -2,7 +2,7 @@
 
 ### Próximos passos
 
-- [ ] Autenticação
+- [x] Autenticação
 - [ ] Listar todas as despesas (normais e grupos)
 - [ ] Listar despesas do último mês na página inicial (normais e grupos)
 - [ ] Criação de despesas (nome, valor, data)
