@@ -1,0 +1,48 @@
+<div class="mb-8">
+  <h1 class="font-bold">Minhas despesas</h1>
+
+  <br>
+
+  <p>Total deste mês: <%= number_to_currency(@current_month_total || 0) %></p>
+  <p>Total do mês passado: <%= number_to_currency(@last_month_total || 0) %></p>
+
+  <br>
+
+  <p>Últimas despesas:</p>
+
+  <ul class="list-disc list-inside">
+    <% @latest_expenses.each do |expense| %>
+      <li><%= number_to_currency(expense.value) %> - <%= format_date(expense) %> - <%= expense.name %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% @groups.each do |group| %>
+  <div class="mb-8">
+    <h1 class="font-bold"><%= group.name %></h1>
+
+    <br>
+
+    <p>Total deste mês: R$ 0,00 ( | 
+      <% group.users.each do |user| %>
+        <%= user.name %> - R$ 0,00 | 
+      <% end %>
+      )
+    </p> 
+    <p>Total do mês passado: R$ 0,00 ( |
+      <% group.users.each do |user| %>
+        <%= user.name %> - R$ 0,00 | 
+      <% end %>
+      )
+    </p>
+
+    <br>
+
+    <p>Últimas despesas:</p>
+    <ul>
+      <li>R$ 1,00 - 01/02/2024 - Sorvete pardal</li>
+      <li>R$ 1,00 - 01/02/2024 - Sorvete pardal</li>
+      <li>R$ 1,00 - 01/02/2024 - Sorvete pardal</li>
+    </ul>
+  </div>
+<% end %>
