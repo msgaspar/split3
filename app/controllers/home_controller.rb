@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @groups = Current.user.groups
-    @latest_expenses = Current.user.expenses.last(10)
+    @latest_expenses = Current.user.expenses.last(5)
 
     @current_month_total = Expense.where(user: Current.user, date: Time.current.beginning_of_month..Time.current.end_of_month).pluck(:value).reduce(:+)
 

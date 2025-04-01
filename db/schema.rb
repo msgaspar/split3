@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_27_190643) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_01_134927) do
   create_table "expenses", force: :cascade do |t|
     t.string "name"
     t.date "date"
@@ -19,6 +19,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_190643) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "group_expenses", force: :cascade do |t|
+    t.string "name"
+    t.date "date"
+    t.decimal "value", precision: 8, scale: 2
+    t.integer "group_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_expenses_on_group_id"
+    t.index ["user_id"], name: "index_group_expenses_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -53,5 +65,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_190643) do
   end
 
   add_foreign_key "expenses", "users"
+  add_foreign_key "group_expenses", "groups"
+  add_foreign_key "group_expenses", "users"
   add_foreign_key "sessions", "users"
 end
